@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>China 2026 · Travel Companion</title>
+
+<!-- iOS Add-to-Home-Screen support -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="China 2026" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="theme-color" content="#1a1613" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+/>
+
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1613; -webkit-font-smoothing: antialiased; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    color: #f2e9db;
+    overflow: hidden;
+  }
+  * { box-sizing: border-box; }
+  button { font-family: inherit; }
+  ::selection { background: #8C5A2B; color: #FAF5EC; }
+
+  .stage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background:
+      radial-gradient(ellipse at center, #2a231c 0%, #14100c 65%, #0a0805 100%);
+  }
+  .stage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events: none;
+  }
+  .side-note {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    color: #b9a78c;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+  .side-note .big {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    text-transform: none;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .screen-in { animation: slideUp 320ms cubic-bezier(.2,.8,.2,1); }
+
+  /* Hide scrollbars inside device */
+  .phone-scroll::-webkit-scrollbar { width: 0; }
+
+  /* ── Standalone / mobile mode: hide demo chrome, fill the screen ── */
+  @media (display-mode: standalone), (pointer: coarse) and (max-width: 640px) {
+    body { display: block; align-items: initial; justify-content: initial; }
+    .stage {
+      width: 100vw; height: 100vh; height: 100dvh;
+      background: #1a1613;
+      display: block; align-items: initial; justify-content: initial;
+    }
+    .stage::before { display: none; }
+    .side-note { display: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="side-note">
+  <span id="side-note-title">China 2026 · Travel Companion</span>
+  <div id="side-note-subtitle" class="big">A field companion for the 15-day journey.</div>
+</div>
+
+<div id="root" class="stage"></div>
+
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+    <rect width="400" height="400" fill="#F4ECDA"/>
+    <rect x="120" y="120" width="160" height="160" rx="6" fill="#8C5A2B"/>
+    <text x="200" y="232" text-anchor="middle" font-family="Georgia, 'Songti SC', serif" font-size="110" font-weight="700" fill="#FAF5EC">游</text>
+    <text x="200" y="320" text-anchor="middle" font-family="'Inter Tight', sans-serif" font-size="16" font-weight="600" letter-spacing="3" fill="#4a3a2b">CHINA · 2026</text>
+  </svg>
+</template>
+
+<!-- Pinned React + Babel -->
+<script>
+window.addEventListener('error', (e) => {
+  console.log('[GLOBAL ERROR]', e.message, e.filename, e.lineno, e.colno, e.error && e.error.stack);
+});
+window.addEventListener('unhandledrejection', (e) => {
+  console.log('[UNHANDLED REJECTION]', e.reason && (e.reason.stack || e.reason.message || e.reason));
+});
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="src/data/raw.js"></script>
+<script type="text/babel" src="components/ios-frame.jsx"></script>
+<script src="src/data/translations.js"></script>
+<script type="text/babel" src="src/data.jsx"></script>
+<script type="text/babel" src="src/i18n.jsx"></script>
+<script type="text/babel" src="src/theme.jsx"></script>
+<script type="text/babel" src="src/ui.jsx"></script>
+<script type="text/babel" src="src/home.jsx"></script>
+<script type="text/babel" src="src/city.jsx"></script>
+<script type="text/babel" src="src/story.jsx"></script>
+<script type="text/babel" src="src/story_body.jsx"></script>
+<script type="text/babel" src="src/extras.jsx"></script>
+<script type="text/babel" src="src/itinerary.jsx"></script>
+<script type="text/babel" src="src/search.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef } = React;
+
+/*EDITMODE-BEGIN*/const TWEAKS_DEFAULT = {
+  "dark": false,
+  "startScreen": "home",
+  "showTweaks": true
+}/*EDITMODE-END*/;
+
+function App() {
+  const { I18nContext, translate } = window.CN26_I18N;
+  const [lang, setLang] = useState(() => {
+    const saved = localStorage.getItem('cn26.lang');
+    return saved || 'en';
+  });
+  const [dark, setDark] = useState(() => {
+    const saved = localStorage.getItem('cn26.dark');
+    return saved !== null ? saved === '1' : TWEAKS_DEFAULT.dark;
+  });
+  const [nav, setNav] = useState(() => {
+    const saved = localStorage.getItem('cn26.nav');
+    try { return saved ? JSON.parse(saved) : { tab: TWEAKS_DEFAULT.startScreen, cityId: null, sectionId: null }; }
+    catch { return { tab: 'home', cityId: null, sectionId: null }; }
+  });
+  const [savedIds, setSavedIds] = useState(() => {
+    const saved = localStorage.getItem('cn26.saved');
+    try {
+      const parsed = saved ? JSON.parse(saved) : [];
+      return Array.isArray(parsed) ? parsed.filter((id) => typeof id === 'string' && id.includes(':')) : [];
+    } catch { return []; }
+  });
+  const [viewer, setViewer] = useState(null);
+  const [tweaksOpen, setTweaksOpen] = useState(false);
+
+  useEffect(() => { localStorage.setItem('cn26.lang', lang); }, [lang]);
+  useEffect(() => { localStorage.setItem('cn26.dark', dark ? '1' : '0'); }, [dark]);
+  useEffect(() => { localStorage.setItem('cn26.nav', JSON.stringify(nav)); }, [nav]);
+  useEffect(() => { localStorage.setItem('cn26.saved', JSON.stringify(savedIds)); }, [savedIds]);
+  useEffect(() => {
+    document.documentElement.lang = lang === 'zh' ? 'zh' : lang;
+    const titleEl = document.getElementById('side-note-title');
+    const subtitleEl = document.getElementById('side-note-subtitle');
+    if (titleEl) titleEl.textContent = t('desktopTitle');
+    if (subtitleEl) subtitleEl.textContent = t('desktopSubtitle');
+  }, [lang]);
+
+  const theme = dark ? window.CN26_THEME.dark : window.CN26_THEME.light;
+  const t = (key, vars) => translate(lang, key, vars);
+  const { HomeScreen } = window.CN26_HOME;
+  const { CityScreen } = window.CN26_CITY;
+  const { StoryScreen } = window.CN26_STORY;
+  const { GalleryScreen, PhotoViewer, SavedScreen, CitiesScreen } = window.CN26_EXTRA;
+  const { ItineraryScreen } = window.CN26_ITINERARY;
+  const { SearchOverlay } = window.CN26_SEARCH;
+  const { TabBar } = window.CN26_UI;
+
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  const toggleSaved = (id) => setSavedIds((s) => s.includes(id) ? s.filter((x) => x !== id) : [...s, id]);
+
+  // Edit mode wiring
+  useEffect(() => {
+    const handler = (e) => {
+      if (!e.data || typeof e.data !== 'object') return;
+      if (e.data.type === '__activate_edit_mode') setTweaksOpen(true);
+      if (e.data.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  // Render current route
+  let screen = null;
+  if (nav.sectionId && nav.cityId) {
+    screen = (
+      <StoryScreen
+        key={nav.sectionId}
+        cityId={nav.cityId}
+        sectionId={nav.sectionId}
+        theme={theme}
+        dark={dark}
+        savedIds={savedIds}
+        onToggleSaved={toggleSaved}
+        onBack={() => setNav((n) => ({ ...n, sectionId: null }))}
+        onOpenSection={(cid, sid) => setNav({ tab: nav.tab, cityId: cid, sectionId: sid })}
+        onOpenPhoto={(src, label) => setViewer({ src, label })}
+      />
+    );
+  } else if (nav.cityId) {
+    screen = (
+      <CityScreen
+        key={nav.cityId}
+        cityId={nav.cityId}
+        theme={theme}
+        onBack={() => setNav((n) => ({ ...n, cityId: null }))}
+        onOpenSection={(cid, sid) => setNav({ tab: nav.tab, cityId: cid, sectionId: sid })}
+        onOpenPhoto={(src, label) => setViewer({ src, label })}
+      />
+    );
+  } else if (nav.tab === 'home') {
+    screen = (
+      <HomeScreen
+        theme={theme}
+        dark={dark}
+        onOpenCity={(id) => setNav({ ...nav, cityId: id })}
+        onOpenSection={(cid, sid) => setNav({ ...nav, cityId: cid, sectionId: sid })}
+        onToggleDark={() => setDark((d) => !d)}
+      />
+    );
+  } else if (nav.tab === 'cities') {
+    screen = <CitiesScreen theme={theme} onOpenCity={(id) => setNav({ ...nav, cityId: id })} />;
+  } else if (nav.tab === 'itinerary') {
+    screen = (
+      <ItineraryScreen
+        theme={theme}
+        onOpenCity={(id) => setNav({ ...nav, cityId: id })}
+        onOpenSection={(cid, sid) => setNav({ ...nav, cityId: cid, sectionId: sid })}
+      />
+    );
+  } else if (nav.tab === 'gallery') {
+    screen = <GalleryScreen theme={theme} onOpenPhoto={(src, label) => setViewer({ src, label })} />;
+  } else if (nav.tab === 'saved') {
+    screen = (
+      <SavedScreen
+        theme={theme}
+        savedIds={savedIds}
+        onOpenSection={(cid, sid) => setNav({ ...nav, cityId: cid, sectionId: sid })}
+        onToggleSaved={toggleSaved}
+      />
+    );
+  }
+
+  const atTopLevel = !nav.cityId && !nav.sectionId;
+  const screenLabel =
+    nav.sectionId ? `story-${nav.sectionId}` :
+    nav.cityId ? `city-${nav.cityId}` :
+    `tab-${nav.tab}`;
+
+  return (
+    <I18nContext.Provider value={{ lang, setLang, t }}>
+      <>
+        <window.IOSDevice width={402} height={874} dark={dark}>
+        <div
+          data-screen-label={screenLabel}
+          className="phone-scroll screen-in"
+          key={screenLabel}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: theme.bg,
+            overflowY: atTopLevel ? 'auto' : 'hidden',
+            fontFamily: window.CN26_THEME.fonts.sans,
+            color: theme.ink,
+            transition: 'background 320ms',
+          }}
+        >
+          {screen}
+        </div>
+        <TabBar active={nav.tab} onChange={(t) => setNav({ tab: t, cityId: null, sectionId: null })} theme={theme} />
+        {atTopLevel && <SearchFAB theme={theme} onClick={() => setSearchOpen(true)} />}
+        {searchOpen && (
+          <SearchOverlay
+            theme={theme}
+            onClose={() => setSearchOpen(false)}
+            onOpenSection={(cid, sid) => { setSearchOpen(false); setNav({ tab: nav.tab, cityId: cid, sectionId: sid }); }}
+          />
+        )}
+        {viewer && <PhotoViewer src={viewer.src} label={viewer.label} onClose={() => setViewer(null)} />}
+        </window.IOSDevice>
+
+        {tweaksOpen && (
+          <TweaksPanel
+            dark={dark} setDark={setDark}
+            nav={nav} setNav={setNav}
+            savedIds={savedIds} setSavedIds={setSavedIds}
+            onClose={() => setTweaksOpen(false)}
+          />
+        )}
+      </>
+    </I18nContext.Provider>
+  );
+}
+
+function TweaksPanel({ dark, setDark, nav, setNav, savedIds, setSavedIds, onClose }) {
+  const { CITIES } = window.CN26_DATA.useData();
+  return (
+    <div style={{
+      position: 'absolute', right: 20, bottom: 20,
+      width: 260, padding: 16,
+      background: '#1a1613',
+      border: '0.5px solid #3a3026',
+      borderRadius: 10,
+      color: '#f2e9db',
+      fontFamily: "'Inter Tight', sans-serif",
+      fontSize: 12,
+      boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+      zIndex: 200,
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+        <div style={{
+          fontFamily: "'Fraunces', serif",
+          fontSize: 16, fontWeight: 500, letterSpacing: -0.3,
+        }}>Tweaks</div>
+        <button onClick={onClose} style={{
+          border: 'none', background: '#2a231c', color: '#f2e9db',
+          width: 24, height: 24, borderRadius: 999, cursor: 'pointer', fontSize: 14, lineHeight: 1,
+        }}>×</button>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0' }}>
+        <span>Day / night mode</span>
+        <button onClick={() => setDark((d) => !d)} style={{
+          border: '0.5px solid #3a3026', background: dark ? '#D79A5E' : '#3a3026',
+          color: dark ? '#1a1613' : '#f2e9db',
+          borderRadius: 999, padding: '5px 10px', cursor: 'pointer', fontSize: 11, fontWeight: 600,
+        }}>{dark ? 'Dark' : 'Light'}</button>
+      </div>
+
+      <div style={{ padding: '8px 0', borderTop: '0.5px solid #3a3026' }}>
+        <div style={{ marginBottom: 6, color: '#978776' }}>Jump to city</div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+          {CITIES.map((c) => (
+            <button key={c.id} onClick={() => setNav({ tab: 'cities', cityId: c.id, sectionId: null })} style={{
+              border: '0.5px solid #3a3026',
+              background: nav.cityId === c.id ? c.accent : 'transparent',
+              color: '#f2e9db',
+              borderRadius: 3, padding: '4px 8px', cursor: 'pointer', fontSize: 11,
+            }}>{c.title}</button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ padding: '8px 0', borderTop: '0.5px solid #3a3026' }}>
+        <div style={{ marginBottom: 6, color: '#978776' }}>Start screen</div>
+        <div style={{ display: 'flex', gap: 5 }}>
+          {['home','cities','gallery','saved'].map((t) => (
+            <button key={t} onClick={() => setNav({ tab: t, cityId: null, sectionId: null })} style={{
+              flex: 1,
+              border: '0.5px solid #3a3026',
+              background: nav.tab === t && !nav.cityId ? '#D79A5E' : 'transparent',
+              color: nav.tab === t && !nav.cityId ? '#1a1613' : '#f2e9db',
+              borderRadius: 3, padding: '4px 6px', cursor: 'pointer', fontSize: 10, textTransform: 'capitalize', fontWeight: 600,
+            }}>{t}</button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ padding: '8px 0', borderTop: '0.5px solid #3a3026' }}>
+        <button onClick={() => setSavedIds(['beijing:beijing-section-1', 'lijiang:lijiang-section-1', 'chengdu:chengdu-section-1'])} style={{
+          width: '100%', border: '0.5px solid #3a3026', background: 'transparent', color: '#f2e9db',
+          borderRadius: 3, padding: '6px', cursor: 'pointer', fontSize: 11,
+        }}>Seed saved list</button>
+      </div>
+    </div>
+  );
+}
+
+function SearchFAB({ theme, onClick }) {
+  const { Icon } = window.CN26_UI;
+  const { t } = window.CN26_I18N.useI18n();
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        position: 'absolute',
+        top: 58,
+        right: 14,
+        width: 40,
+        height: 40,
+        borderRadius: 999,
+        border: `0.5px solid ${theme.rule}`,
+        background: theme.paper + 'F2',
+        backdropFilter: 'blur(16px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+        color: theme.ink,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        boxShadow: '0 4px 14px rgba(0,0,0,0.10)',
+        zIndex: 45,
+      }}
+      aria-label={t('searchOpen')}
+    >
+      <Icon name="search" size={17} stroke={1.8} />
+    </button>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>
