@@ -16,8 +16,11 @@
   }
 
   // Parse a leading tag like "AM:", "PM:", "EVE:", "DINNER:", "Early AM:", "8:00 PM:"
+  // Also supports CJK tags with full-width colon: "上午：", "下午：", "晚上："
   function splitTag(line) {
-    const m = line.match(/^([A-Za-z][A-Za-z0-9 :&]{0,18}):\s*(.+)$/);
+    let m = line.match(/^([一-鿿]{1,8})[：:]\s*(.+)$/);
+    if (m) return { tag: m[1].trim(), text: m[2].trim() };
+    m = line.match(/^([A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß0-9 :&]{0,18}):\s*(.+)$/);
     if (m) return { tag: m[1].trim(), text: m[2].trim() };
     return { tag: null, text: line.trim() };
   }
@@ -179,7 +182,7 @@
                     marginTop: 2,
                   }}
                 >
-                  {d.cityTitle.slice(0, 6)}
+                  {d.cityTitle}
                 </div>
                 {/* top tick mark if city transition */}
                 {i === 0 || days[i - 1].cityId !== d.cityId ? (
@@ -363,7 +366,7 @@
             >
               <div
                 style={{
-                  width: 52,
+                  width: 72,
                   flexShrink: 0,
                   fontFamily: window.CN26_THEME.fonts.sans,
                   fontSize: 9.5,
@@ -372,6 +375,8 @@
                   color: day.cityAccent,
                   fontWeight: 700,
                   paddingTop: 2,
+                  overflowWrap: 'anywhere',
+                  lineHeight: 1.25,
                 }}
               >
                 {it.tag || '·'}
