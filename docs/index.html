@@ -250,9 +250,11 @@ function App() {
       <HomeScreen
         theme={theme}
         dark={dark}
+        savedIds={savedIds}
         onOpenCity={(id) => setNav({ ...nav, cityId: id })}
         onOpenSection={(cid, sid) => setNav({ ...nav, cityId: cid, sectionId: sid })}
         onToggleDark={() => setDark((d) => !d)}
+        onSwitchTab={(tab) => setNav({ tab, cityId: null, sectionId: null })}
       />
     );
   } else if (nav.tab === 'cities') {
