@@ -504,6 +504,7 @@ function CitiesScreen({ theme, onOpenCity }) {
   const { CITIES } = window.CN26_DATA.useData();
   const { Kicker, Icon } = window.CN26_UI;
   const { t } = window.CN26_I18N.useI18n();
+  const cityList = CITIES.filter((c) => c.category === 'city');
   return (
     <div style={{ paddingBottom: 120 }}>
       <div style={{ padding: 'calc(env(safe-area-inset-top, 0px) + 72px) 22px 18px' }}>
@@ -523,7 +524,7 @@ function CitiesScreen({ theme, onOpenCity }) {
         </div>
       </div>
       <div style={{ padding: '0 22px', display: 'flex', flexDirection: 'column', gap: 14 }}>
-        {CITIES.map((c, i) => (
+        {cityList.map((c, i) => (
           <button
             key={c.id}
             onClick={() => onOpenCity(c.id)}
