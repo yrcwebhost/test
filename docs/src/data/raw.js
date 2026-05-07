@@ -261,7 +261,7 @@ window.CN26_RAW = [
     "shortTitle": "Kunming",
     "category": "city",
     "accent": "#4A8C5C",
-    "dateLabel": "",
+    "dateLabel": "4 days",
     "summary": "Kunming wears its altitude lightly. At 1,900 metres the air has a sharpness that softens the summer heat, and the city's famous Spring City character survives even in the monsoon month, when the light turns silver and the evenings stay unexpectedly gentle.",
     "sections": [
       {
