@@ -78,6 +78,7 @@ function CityScreen({ cityId, theme, onBack, onOpenSection, onOpenPhoto }) {
         <img
           src={city.hero}
           alt=""
+          decoding="async"
           style={{
             position: 'absolute',
             inset: 0,
@@ -219,6 +220,8 @@ function CityScreen({ cityId, theme, onBack, onOpenSection, onOpenPhoto }) {
                   <img
                     src={g.src}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>

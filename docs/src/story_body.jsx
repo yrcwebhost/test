@@ -16,6 +16,8 @@ function LongformBody({ section, city, theme }) {
           <img
             src={section.image}
             alt=""
+            loading="lazy"
+            decoding="async"
             style={{ width: '100%', height: 260, objectFit: 'cover', display: 'block' }}
           />
           <figcaption

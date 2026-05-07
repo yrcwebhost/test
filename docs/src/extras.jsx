@@ -122,6 +122,8 @@ function PhotoCell({ photo, flex = 1, ratio = 1, theme, onOpen }) {
       <img
         src={photo.src}
         alt=""
+        loading="lazy"
+        decoding="async"
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
       />
       <div
@@ -261,6 +263,7 @@ function PhotoViewer({ src, label, onClose }) {
         <img
           src={src}
           alt=""
+          decoding="async"
           draggable={false}
           style={{
             maxWidth: '100%',
@@ -418,6 +421,8 @@ function SavedScreen({ theme, savedIds, onOpenSection, onToggleSaved }) {
                 <img
                   src={s.image || (city && city.hero)}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: 80, height: 100, objectFit: 'cover', flexShrink: 0, borderRadius: 2 }}
                 />
                 <div style={{ flex: 1 }}>
@@ -541,6 +546,8 @@ function CitiesScreen({ theme, onOpenCity }) {
             <img
               src={c.hero}
               alt=""
+              loading="lazy"
+              decoding="async"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
             />
             <div

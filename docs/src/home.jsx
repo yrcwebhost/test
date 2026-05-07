@@ -77,6 +77,7 @@ function HomeScreen({ theme, dark, onOpenCity, onToggleDark, onOpenSection, onSw
             <img
               src={featured.image || featuredCity.hero}
               alt=""
+              decoding="async"
               style={{
                 position: 'absolute', inset: 0, width: '100%', height: '100%',
                 objectFit: 'cover', filter: 'saturate(1.05)',
