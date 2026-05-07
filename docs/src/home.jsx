@@ -237,8 +237,8 @@ function TripRibbon({ cities, theme }) {
       border: `0.5px solid ${theme.rule}`, borderRadius: 4,
       background: theme.paper, padding: 12,
     }}>
-      <div style={{ display: 'flex', height: 38, borderRadius: 3, overflow: 'hidden' }}>
-        {cities.map((c, i) => {
+      <div style={{ display: 'flex', height: 38, gap: 4 }}>
+        {cities.map((c) => {
           const flex = (c.dayCount || 1) / totalDays;
           return (
             <div
@@ -248,28 +248,10 @@ function TripRibbon({ cities, theme }) {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontFamily: window.CN26_THEME.fonts.sans, fontSize: 10.5,
                 fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase',
-                borderRight: i < cities.length - 1 ? '1px solid rgba(255,255,255,0.25)' : 'none',
-                minWidth: 0,
+                borderRadius: 3, minWidth: 0,
               }}
             >
               {c.shortTitle}
-            </div>
-          );
-        })}
-      </div>
-      <div style={{ display: 'flex', marginTop: 8 }}>
-        {cities.map((c) => {
-          const flex = (c.dayCount || 1) / totalDays;
-          return (
-            <div
-              key={c.id}
-              style={{
-                flex, fontFamily: window.CN26_THEME.fonts.sans, fontSize: 10,
-                color: theme.muted, fontWeight: 600, letterSpacing: 1,
-                textAlign: 'center',
-              }}
-            >
-              {c.dayCount}d
             </div>
           );
         })}
