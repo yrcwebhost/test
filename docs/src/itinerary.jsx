@@ -1,11 +1,16 @@
 // Itinerary — a day-by-day timeline derived from each city's `schedule` section.
 
 (function () {
-  // Parse a day header like "DAY 1 — ARRIVAL, QIANMEN..."
+  // Parse a day header. Accepts:
+  //   EN: "DAY 1 — ARRIVAL..."
+  //   DE: "TAG 1 — ANKUNFT..."
+  //   ZH: "第 1 天 —— 抵达..."
   // Returns { dayN, title } or null.
   function parseDayHeader(line) {
     const L = line.trim();
-    const m = L.match(/^DAY\s+(\d{1,2})\s*[—–-]\s*(.+)$/i);
+    let m = L.match(/^(?:DAY|TAG)\s+(\d{1,2})\s*[—–\-]\s*(.+)$/i);
+    if (m) return { dayN: parseInt(m[1], 10), title: m[2].trim() };
+    m = L.match(/^第\s*(\d{1,2})\s*天\s*[—–\-]+\s*(.+)$/);
     if (m) return { dayN: parseInt(m[1], 10), title: m[2].trim() };
     return null;
   }
