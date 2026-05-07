@@ -261,7 +261,7 @@ window.CN26_RAW = [
     "shortTitle": "Kunming",
     "category": "city",
     "accent": "#4A8C5C",
-    "dateLabel": "3 days",
+    "dateLabel": "",
     "summary": "Kunming wears its altitude lightly. At 1,900 metres the air has a sharpness that softens the summer heat, and the city's famous Spring City character survives even in the monsoon month, when the light turns silver and the evenings stay unexpectedly gentle.",
     "sections": [
       {
@@ -271,6 +271,27 @@ window.CN26_RAW = [
         "body": [
           "Kunming wears its altitude lightly. At 1,900 metres the air has a sharpness that softens the summer heat, and the city's famous Spring City character survives even in the monsoon month, when the light turns silver and the evenings stay unexpectedly gentle.",
           "It is less a headline city than a threshold one: a place of lakeside parks, Republican facades, and market tables stacked with wild mushrooms before the route climbs further into Dali and Lijiang. late summer is the moment when Kunming feels most itself, with porcini, morels, Dai flavours, and highland coolness all arriving at once."
+        ]
+      },
+      {
+        "id": "kunming-section-schedule",
+        "type": "schedule",
+        "title": "Schedule",
+        "body": [],
+        "bullets": [
+          "DAY 1 — ARRIVAL & CITY LIGHTS",
+          "PM: Arrive from Beijing and settle into the city.",
+          "EVE: Local light dinner and rest.",
+          "DAY 2 — HIGHLAND HERITAGE & THERMAL SANCTUARY",
+          "AM: Haigeng Dam for Dianchi vistas, then Yunnan Ethnic Village for lakeside culture.",
+          "PM: Transfer west to Anning Hot Springs for a tea tasting.",
+          "EVE: Wild mushroom dinner in a classic Dian-style table at Fuzhaolou, South Ring Road.",
+          "DAY 3 — DEPARTURE TO DALI",
+          "AM: Gentle final coffee.",
+          "DAY: High-speed rail onward to Dali.",
+          "DAY 4 — SCHOLARLY LANES & REPUBLICAN ELEGANCE",
+          "PM: Return to Kunming and base near the central walking route.",
+          "EVE: Green Lake, Wenlin, Old Street, Nanqiang, and Jinma Biji, then dinner at Dehong Flavor Restaurant."
         ]
       },
       {

@@ -210,6 +210,23 @@
             'Die Stadt ist weniger ein Schlagzeilenziel als ein Schwellenort: Parks am See, republikanische Fassaden und Marktstände voller wilder Pilze, bevor die Route weiter nach Dali und Lijiang hinaufsteigt. Der Spätsommer ist der Moment, in dem Kunming sich am meisten nach sich selbst anfühlt: Steinpilze, Morcheln, Dai-Aromen und Hochlandkühle treffen gleichzeitig ein.',
           ],
         },
+        'kunming-section-schedule': {
+          bullets: [
+            'TAG 1 — ANKUNFT & ABENDLICHTER',
+            'NACHMITTAG: Aus Peking kommend in der Stadt einchecken.',
+            'ABEND: Leichtes lokales Abendessen und Ruhe.',
+            'TAG 2 — HOCHLANDERBE & THERMAL-RÜCKZUG',
+            'MORGEN: Haigeng-Damm für Blicke über den Dianchi, danach das Ethnische Dorf Yunnan für Kultur am Seeufer.',
+            'NACHMITTAG: Weiter westlich zu den Heißen Quellen von Anning für eine Teeverkostung.',
+            'ABEND: Wildpilz-Abendessen an einem klassischen Dian-Tisch im Fuzhaolou, South Ring Road.',
+            'TAG 3 — ABREISE NACH DALI',
+            'MORGEN: Letzter ruhiger Kaffee.',
+            'TAG: Hochgeschwindigkeitszug weiter nach Dali.',
+            'TAG 4 — GELEHRTE GASSEN & REPUBLIKANISCHE ELEGANZ',
+            'NACHMITTAG: Rückkehr nach Kunming und Quartier nahe der zentralen Spazierroute.',
+            'ABEND: Green Lake, Wenlin, Old Street, Nanqiang und Jinma Biji, dann Abendessen im Dehong Flavor Restaurant.',
+          ],
+        },
         'kunming-section-2': {
           body: [
             'Yunnan ist Chinas ethnisch vielfältigste Provinz und Heimat von 25 der 56 offiziell anerkannten Volksgruppen. Das Ethnische Dorf, das sich über 84 Hektar am Ufer des Dianchi-Sees erstreckt, ist mehr als ein Themenpark — es ist ein lebendiges Museum von Architektur und Tradition. Jedes „Dorf“ wurde im exakten Maßstab mit authentischen Materialien errichtet: die weiß verputzten Häuser der Bai, die auf Stelzen stehenden Bambushäuser der Dai mit ihren golden gedeckten Tempeln und die pilzförmigen Häuser der Hani.',
@@ -1561,6 +1578,23 @@
           body: [
             '昆明把自己的海拔处理得很轻。1,900 米的高度让空气带着一种清劲，足以削弱夏季的热度；即便在雨季，光线转成银灰色，夜晚也依旧出人意料地温柔，这座“春城”的性格仍然成立。',
             '它不像那种靠 headline 取胜的城市，更像一个门槛城市：湖畔公园、民国立面、堆满野生菌的市场摊位，然后路线再继续往更高处爬向大理与丽江。到了夏末，昆明最像它自己：牛肝菌、羊肚菌、傣味，以及高原的凉意同时到场。',
+          ],
+        },
+        'kunming-section-schedule': {
+          bullets: [
+            '第 1 天 —— 抵达与夜灯',
+            '下午：从北京飞抵后入住，安顿下来。',
+            '傍晚：本地清淡晚餐与休整。',
+            '第 2 天 —— 高原文脉与温泉静处',
+            '上午：海埂大坝看滇池远景，再前往云南民族村感受湖畔多元文化。',
+            '下午：向西转场至安宁温泉，喝一席茶。',
+            '傍晚：在南二环路的福照楼以滇式正餐吃一顿野生菌晚餐。',
+            '第 3 天 —— 转场大理',
+            '上午：温和的最后一杯咖啡。',
+            '当日：高铁继续前往大理。',
+            '第 4 天 —— 学府小巷与民国雅致',
+            '下午：返回昆明，在中轴步行路线附近落脚。',
+            '傍晚：翠湖、文林、老街、南强街与金马碧鸡，之后在德宏味道餐厅吃晚饭。',
           ],
         },
         'kunming-section-2': {
