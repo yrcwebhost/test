@@ -180,6 +180,7 @@ function CityScreen({ cityId, theme, onBack, onOpenSection, onOpenPhoto }) {
         </div>
 
         {/* Gallery rail */}
+        {city.gallery && city.gallery.length > 0 && (
         <div style={{ padding: '6px 0 26px' }}>
           <div style={{ padding: '0 22px 12px' }}>
             <Kicker theme={theme} color={city.accent}>{t('cityPhotography')}</Kicker>
@@ -242,6 +243,7 @@ function CityScreen({ cityId, theme, onBack, onOpenSection, onOpenPhoto }) {
             ))}
           </div>
         </div>
+        )}
 
         {/* Table of Contents */}
         <div style={{ padding: '18px 22px 6px' }}>

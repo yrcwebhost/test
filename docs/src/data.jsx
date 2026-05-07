@@ -148,13 +148,9 @@
       kicker: 'How to Travel This',
       accent: '#4A6B82',
       accentSoft: '#7A96AC',
-      hero: 'assets/guide/beijing-map.png',
+      hero: 'assets/guide/beijing-hero.png',
       lede: 'Payment, rail, reservations, translation, and the apps that replace cash — handled before departure, everything else disappears into the background.',
-      gallery: [
-        { src: 'assets/guide/beijing-map.png', label: 'Beijing map' },
-        { src: 'assets/guide/dali-map.png', label: 'Dali map' },
-        { src: 'assets/guide/lijiang-map.png', label: 'Lijiang map' },
-      ],
+      gallery: [],
     },
   };
 
@@ -373,7 +369,10 @@
         hero: m.hero || 'assets/guide/beijing-hero.png',
         summary: cityT.summary || raw.summary,
         lede: cityT.lede || m.lede || raw.summary,
-        gallery: m.gallery || [],
+        gallery: (m.gallery || []).map((g) => ({
+          ...g,
+          label: (localized.galleryLabels && localized.galleryLabels[g.label]) || g.label,
+        })),
         sections: merged,
         order: idx,
       };
