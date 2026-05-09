@@ -12,7 +12,7 @@
       seal: '京',
       kicker: 'The Imperial Capital',
       accentSoft: '#C87A6E',
-      hero: 'assets/guide/beijing-hero.png',
+      hero: 'assets/guide/great_wall.png',
       lede: 'Three days trace that authority through the capital: palace courts, lakeside gardens, hutong water lanes, and incense-heavy temple halls — before the route breaks south-west towards Yunnan.',
       gallery: [
         { src: 'assets/guide/beijing-hero.png', label: 'Forbidden City axis' },
@@ -148,7 +148,7 @@
       kicker: 'How to Travel This',
       accent: '#4A6B82',
       accentSoft: '#7A96AC',
-      hero: 'assets/guide/beijing-hero.png',
+      hero: 'assets/guide/xiangjiang.png',
       lede: 'Payment, rail, reservations, translation, and the apps that replace cash — handled before departure, everything else disappears into the background.',
       gallery: [],
     },
@@ -382,10 +382,22 @@
       c.sections.map((s) => ({ ...s, cityId: c.id, cityTitle: c.title, accent: c.accent }))
     );
 
-    const ALL_PHOTOS = CITIES.flatMap((c) => [
-      { src: c.hero, label: c.title, cityId: c.id, accent: c.accent },
-      ...c.gallery.map((g) => ({ ...g, cityId: c.id, accent: c.accent })),
-    ]);
+    const ALL_PHOTOS = (() => {
+      const seen = new Set();
+      const out = [];
+      for (const c of CITIES) {
+        const entries = [
+          { src: c.hero, label: c.title, cityId: c.id, accent: c.accent },
+          ...c.gallery.map((g) => ({ ...g, cityId: c.id, accent: c.accent })),
+        ];
+        for (const e of entries) {
+          if (seen.has(e.src)) continue;
+          seen.add(e.src);
+          out.push(e);
+        }
+      }
+      return out;
+    })();
 
     return { CITIES, ALL_SECTIONS, ALL_PHOTOS };
   }

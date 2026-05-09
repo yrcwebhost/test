@@ -3,14 +3,11 @@
 
 function HomeScreen({ theme, dark, onOpenCity, onToggleDark, onOpenSection, onSwitchTab, savedIds }) {
   const { CITIES, ALL_SECTIONS } = window.CN26_DATA.useData();
-  const { Kicker, Icon, Seal } = window.CN26_UI;
+  const { Kicker, Icon } = window.CN26_UI;
   const { t } = window.CN26_I18N.useI18n();
 
   const cityEntries = CITIES.filter((c) => c.category === 'city');
   const themeEntries = CITIES.filter((c) => c.category !== 'city');
-
-  const featuredCity = cityEntries[0];
-  const featured = featuredCity.sections[0];
 
   const savedSections = (savedIds || [])
     .map((id) => ALL_SECTIONS.find((s) => `${s.cityId}:${s.id}` === id))
@@ -61,10 +58,11 @@ function HomeScreen({ theme, dark, onOpenCity, onToggleDark, onOpenSection, onSw
         </div>
       </div>
 
-      {/* Featured cover */}
+      {/* Featured cover — tap to open Chapters */}
       <div style={{ padding: '0 22px' }}>
         <button
-          onClick={() => onOpenSection(featuredCity.id, featured.id)}
+          onClick={() => onSwitchTab && onSwitchTab('cities')}
+          aria-label={t('tabCities')}
           style={{
             width: '100%', textAlign: 'left', padding: 0, border: 'none',
             background: 'transparent', cursor: 'pointer', display: 'block',
@@ -75,7 +73,7 @@ function HomeScreen({ theme, dark, onOpenCity, onToggleDark, onOpenSection, onSw
             overflow: 'hidden', background: '#000',
           }}>
             <img
-              src={featured.image || featuredCity.hero}
+              src="assets/guide/mountain.png"
               alt=""
               decoding="async"
               style={{
@@ -83,44 +81,6 @@ function HomeScreen({ theme, dark, onOpenCity, onToggleDark, onOpenSection, onSw
                 objectFit: 'cover', filter: 'saturate(1.05)',
               }}
             />
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.78) 100%)',
-            }} />
-            <div style={{ position: 'absolute', top: 16, left: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Seal text={featuredCity.seal} color={featuredCity.accent} size={36} />
-              <div style={{ color: '#FFF' }}>
-                <div style={{
-                  fontFamily: window.CN26_THEME.fonts.sans, fontSize: 9.5,
-                  letterSpacing: 2, textTransform: 'uppercase',
-                  opacity: 0.85, fontWeight: 600,
-                }}>
-                  {t('homeCoverStory')}
-                </div>
-                <div style={{
-                  fontFamily: window.CN26_THEME.fonts.sans, fontSize: 12,
-                  fontWeight: 700, letterSpacing: 0.3,
-                }}>
-                  {featuredCity.title} · {featuredCity.dateLabel}
-                </div>
-              </div>
-            </div>
-            <div style={{ position: 'absolute', left: 18, right: 18, bottom: 16, color: '#FFF' }}>
-              <div style={{
-                fontFamily: window.CN26_THEME.fonts.display, fontSize: 32,
-                lineHeight: 1, fontWeight: 500, letterSpacing: -0.5,
-                textShadow: '0 2px 18px rgba(0,0,0,0.4)',
-              }}>
-                {featured.title}
-              </div>
-              <div style={{
-                fontFamily: window.CN26_THEME.fonts.serif, fontSize: 15,
-                lineHeight: 1.35, marginTop: 8, opacity: 0.95,
-                fontStyle: 'italic', textShadow: '0 1px 10px rgba(0,0,0,0.4)',
-              }}>
-                {featuredCity.kicker}
-              </div>
-            </div>
           </div>
         </button>
       </div>
